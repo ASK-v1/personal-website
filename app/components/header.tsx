@@ -21,7 +21,7 @@ export default function Header() {
         duration: 0.75,
         ease: "easeInOut",
       }}
-      className="w-full flex flex-row items-center pt-10 px-5 sm:px-10 bg-black"
+      className="w-full flex flex-row items-center pt-10 px-5 sm:px-10 z-10"
     >
       <p className="hidden sm:flex uppercase w-full -mt-4 text-lg sm:text-xl tracking-wider text-white">
         AHMET KANTAR
