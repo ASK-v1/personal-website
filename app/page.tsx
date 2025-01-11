@@ -5,6 +5,7 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import Lenis from "lenis";
 import Hero from "./components/hero";
+import About from "./components/about";
 
 export default function Home() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -31,10 +32,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full items-center flex flex-col">
+    <div className="w-full flex flex-col">
       <Header />
-      <main className="w-full">
+      <main className="w-full flex flex-col gap-80 mb-80">
         <Hero />
+        <About />
       </main>
       <Footer />
     </div>

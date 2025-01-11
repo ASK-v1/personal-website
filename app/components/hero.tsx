@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "motion/react";
+import { motion, useInView, animate } from "motion/react";
 import { useRef } from "react";
 import Image from "next/image";
 
@@ -17,6 +17,23 @@ export default function Hero() {
   const isInView = useInView(ref, { once: true, amount: 0.75 });
 
   const photo = process.env.NEXT_PUBLIC_PHOTO ?? "";
+
+  const smoothScroll = (targetId: string) => {
+    const element = document.getElementById(targetId);
+    if (!element) return;
+
+    const elementPosition =
+      element.getBoundingClientRect().top + window.scrollY - 320;
+
+    animate(window.scrollY, elementPosition, {
+      type: "tween",
+      ease: [0.42, 0.0, 0.58, 1.0],
+      duration: 1.5,
+      onUpdate: (value) => {
+        window.scrollTo(0, value);
+      },
+    });
+  };
 
   return (
     <div
@@ -86,7 +103,10 @@ export default function Hero() {
           <span>PRESENT</span>
         </p>
 
-        <button className="uppercase tracking-wider text-lg sm:text-xl font-medium text-white duration-300 hover:text-neutral-400">
+        <button
+          onClick={() => smoothScroll("about")}
+          className="uppercase tracking-wider text-lg sm:text-xl font-medium text-white duration-300 hover:text-neutral-400"
+        >
           Scroll to view more
         </button>
       </motion.div>
