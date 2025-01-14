@@ -3,6 +3,7 @@
 import { motion, useInView, animate } from "motion/react";
 import { useRef } from "react";
 import Image from "next/image";
+import Ether from "./ether";
 
 const animText = {
   initial: { y: "100%" },
@@ -23,7 +24,7 @@ export default function Hero() {
     if (!element) return;
 
     const elementPosition =
-      element.getBoundingClientRect().top + window.scrollY - 320;
+      element.getBoundingClientRect().top + window.scrollY - 160;
 
     animate(window.scrollY, elementPosition, {
       type: "tween",
@@ -38,9 +39,11 @@ export default function Hero() {
   return (
     <div
       ref={ref}
-      className="w-full h-screen flex flex-col bg-black -mt-[100px]"
+      className="relative w-full h-screen flex flex-col bg-black -mt-[100px] -mb-40 overflow-hidden"
     >
-      <motion.div className="my-auto uppercase text-5xl lg:text-9xl text-start font-medium tracking-wide flex flex-col items-start text-white px-5 sm:px-10">
+      <Ether />
+
+      <motion.div className="my-auto uppercase text-5xl lg:text-9xl text-start font-medium tracking-wide flex flex-col items-start text-white px-5 sm:px-10 z-10">
         <div className="overflow-hidden">
           <motion.h1
             variants={animText}
@@ -89,7 +92,7 @@ export default function Hero() {
           duration: 0.75,
           ease: "easeInOut",
         }}
-        className="flex flex-row justify-between items-center w-full px-5 sm:px-10 pb-10"
+        className="flex flex-row justify-between items-center w-full px-5 sm:px-10 pb-10 z-10"
       >
         <p className="uppercase text-white tracking-wider text-lg sm:text-xl">
           Available For Work
